@@ -16,7 +16,7 @@ namespace Lab04_Nhom
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmNhanVien());
-        }
+            Application.Run(new frmSinhVien(new DTO.NhanVienDTO { MaNV = "NV01", HoTen = "HoThanhBinh"}));
+            }
     }
 }

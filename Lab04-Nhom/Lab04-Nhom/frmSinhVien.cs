@@ -10,13 +10,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Lab04_Nhom.CryptoExtension;
 namespace Lab04_Nhom
 {
     public partial class frmSinhVien : Form
     {
         private NhanVienDTO CurNhanVien { get; set; }
         SqlDatabase DbLib;
+        List<SinhVien> ListSinhVien
+        {
+            get { return sinhVienBindingSource.DataSource as List<SinhVien>; }
+            set { sinhVienBindingSource.DataSource = value; }
+        }
         public frmSinhVien()
         {
             InitializeComponent();
@@ -54,13 +59,17 @@ namespace Lab04_Nhom
             var existItem = DbLib.GetOne<SinhVien>(String.Format("select MaSV from SinhVien where MaSV ='{0}'", item.MaSV));
             if(existItem != null)
             {
+                if(item.MatKhau != existItem.MatKhau)
+                {
+                    item.MatKhau = item.MatKhau.GetSHA1Hash();
+                }
                 var parameters = item.ToSqlParameter();
-                parameters.Remove(parameters.Last());
-                DbLib.ExecuteNonQuery("SP_UPD_SINHVIEN", parameters);
+                DbLib.ExecuteNonQuery("SP_UPD_ENCRYPTED_SINHVIEN", parameters);
             }
             else
             {
-                DbLib.ExecuteNonQuery("SP_INS_SINHVIEN", item.ToSqlParameter());
+                item.MatKhau = item.MatKhau.GetSHA1Hash();
+                DbLib.ExecuteNonQuery("SP_INS_ENCRYPTED_SINHVIEN", item.ToSqlParameter());
             }
         }
 
@@ -76,6 +85,13 @@ namespace Lab04_Nhom
         private void RefreshData()
         {
             this.frmSinhVien_Load(null, null);
+        }
+
+        private void themButton_Click(object sender, EventArgs e)
+        {
+            ListSinhVien.Add(new SinhVien());
+            sinhVienBindingSource.ResetBindings(false);
+            sinhVienBindingSource.MoveLast();
         }
     }
 }

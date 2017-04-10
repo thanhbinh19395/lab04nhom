@@ -148,9 +148,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\Database.sql" />
-    <Content Include="StoreProcedures\SP_UPD_SINHVIEN.sql" />
+    <Content Include="StoreProcedures\SP_UPD_ENCRYPTED_SINHVIEN.sql" />
     <Content Include="StoreProcedures\SP_SEL_PUBLIC_NHANVIEN.sql" />
-    <Content Include="StoreProcedures\SP_INS_SINHVIEN.sql" />
+    <Content Include="StoreProcedures\SP_INS_ENCRYPTED_SINHVIEN.sql" />
     <Content Include="StoreProcedures\SP_BANGDIEM_Update.sql" />
     <Content Include="StoreProcedures\SP_BANGDIEM_Insert.sql" />
     <Content Include="StoreProcedures\SP_BANGDIEM_GetDecryptedListByMaSV.sql" />

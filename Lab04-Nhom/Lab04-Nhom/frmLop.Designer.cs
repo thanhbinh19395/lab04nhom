@@ -43,6 +43,7 @@
             this.xoaButton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.nhanVienPublicDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.themButton = new System.Windows.Forms.Button();
             maLopLabel = new System.Windows.Forms.Label();
             maNVLabel = new System.Windows.Forms.Label();
             tenLopLabel = new System.Windows.Forms.Label();
@@ -142,7 +143,7 @@
             // 
             // xoaButton
             // 
-            this.xoaButton.Location = new System.Drawing.Point(528, 17);
+            this.xoaButton.Location = new System.Drawing.Point(523, 17);
             this.xoaButton.Name = "xoaButton";
             this.xoaButton.Size = new System.Drawing.Size(75, 23);
             this.xoaButton.TabIndex = 8;
@@ -166,11 +167,22 @@
             // 
             this.nhanVienPublicDTOBindingSource.DataSource = typeof(Lab04_Nhom.DTO.NhanVienDTO);
             // 
+            // themButton
+            // 
+            this.themButton.Location = new System.Drawing.Point(442, 17);
+            this.themButton.Name = "themButton";
+            this.themButton.Size = new System.Drawing.Size(75, 23);
+            this.themButton.TabIndex = 10;
+            this.themButton.Text = "Thêm";
+            this.themButton.UseVisualStyleBackColor = true;
+            this.themButton.Click += new System.EventHandler(this.themButton_Click);
+            // 
             // frmLop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 446);
+            this.Controls.Add(this.themButton);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.xoaButton);
             this.Controls.Add(this.luuButton);
@@ -204,5 +216,6 @@
         private System.Windows.Forms.Button xoaButton;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.BindingSource nhanVienPublicDTOBindingSource;
+        private System.Windows.Forms.Button themButton;
     }
 }
