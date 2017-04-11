@@ -45,6 +45,7 @@ namespace Lab04_Nhom
         private void luuButton_Click(object sender, EventArgs e)
         {
             ListNhanVien.ForEach(this.SaveHandler);
+            MessageBox.Show("Thao tác thành công!");
         }
         private void SaveHandler(NhanVien item) {
             if (String.IsNullOrWhiteSpace(item.Luong) || String.IsNullOrWhiteSpace(item.MatKhau))
@@ -72,9 +73,12 @@ namespace Lab04_Nhom
             {
                 item.MatKhau = item.MatKhau.GetMd5Hash();
                 item.Luong = item.Luong.GetAES256EncryptString();
-                DbLib.ExecuteNonQuery("SP_INS_ENCRYPT_NHANVIEN", item.ToSqlParameter());
+                DbLib.ExecuteNonQuery("SP_INS_PUBLIC_ENCRYPT_NHANVIEN", item.ToSqlParameter());
+                
             }
+            
             ReloadGrid();
+
         }
 
         private void xoaButton_Click(object sender, EventArgs e)
