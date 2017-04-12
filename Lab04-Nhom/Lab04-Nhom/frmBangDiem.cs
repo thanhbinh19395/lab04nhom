@@ -75,8 +75,8 @@ namespace Lab04_Nhom
             {
                 List<SqlParameter> listParams = new List<SqlParameter>
                 {
-                    new SqlParameter {ParameterName = "PubKey", Value = this.curNhanVien.MaNV },
-                    new SqlParameter {ParameterName = "PrivateKey", Value = this.privateKey  },
+                    new SqlParameter {ParameterName = "PubKey", Value = "NV01" },
+                    new SqlParameter {ParameterName = "PrivateKey", Value = "123456"  },
                     new SqlParameter {ParameterName ="MaSV", Value = cur.MaSV }
                 };
                 bangDiemBindingSource.DataSource = DbLib.GetList<BangDiem>("SP_BANGDIEM_GetDecryptedListByMaSV", listParams);

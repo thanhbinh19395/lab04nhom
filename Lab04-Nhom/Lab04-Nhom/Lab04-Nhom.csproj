@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CryptoExtension\AES256Extension.cs" />
+    <Compile Include="CryptoExtension\RSA2048Extension.cs" />
     <Compile Include="CryptoExtension\RSA512Extension.cs" />
     <Compile Include="CryptoExtension\SHA1Extension.cs" />
     <Compile Include="DTO\LoginDTO.cs" />

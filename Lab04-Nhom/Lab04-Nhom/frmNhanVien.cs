@@ -31,7 +31,7 @@ namespace Lab04_Nhom
         private void frmNhanVien_Load(object sender, EventArgs e)
         {
             var list = DbLib.GetList<NhanVien>("SP_SEL_PUBLIC_ENCRYPT_NHANVIEN");
-            list.ForEach(item => item.Luong = item.Luong.GetAES256DecryptString());
+            list.ForEach(item => item.Luong = item.Luong.GetRSA512DecryptString("123456"));
             ListNhanVien = list;
         }
 
@@ -65,7 +65,7 @@ namespace Lab04_Nhom
                 }
                 if (existItem.Luong != item.Luong)
                 {
-                    item.Luong = item.Luong.GetAES256EncryptString();
+                    item.Luong = item.Luong.GetRSA512EncryptString(item.PubKey);
                 }
                 DbLib.ExecuteNonQuery("SP_UPD_ENCRYPT_NHANVIEN", item.ToSqlParameter());
             }
