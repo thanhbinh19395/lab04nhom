@@ -1,4 +1,5 @@
 ﻿using Lab04_Nhom.DTO;
+using Lab04_Nhom.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,18 +14,18 @@ namespace Lab04_Nhom
 {
     public partial class frmQuanLySV : Form
     {
-        NhanVienDTO curNhanVien { get; set; }
-        string privateKey { get; set; }
+        NhanVien curNhanVien { get; set; }
+        string password { get; set; }
         public frmQuanLySV()
         {
             InitializeComponent();
         }
 
-        public frmQuanLySV(NhanVienDTO nv, string privateKey)
+        public frmQuanLySV(NhanVien nv, string password)
         {
             InitializeComponent();
             this.curNhanVien = nv;
-            this.privateKey = privateKey;
+            this.password = password;
         }
 
         private void sinhVienFrmButton_Click(object sender, EventArgs e)
@@ -41,13 +42,19 @@ namespace Lab04_Nhom
 
         private void bangDiemFrmButton_Click(object sender, EventArgs e)
         {
-            var frm = new frmBangDiem(curNhanVien, privateKey);
-            frm.Show();
+            //var frm = new frmBangDiem(curNhanVien, password);
+            //frm.Show();
         }
 
         private void frmQuanLySV_Load(object sender, EventArgs e)
         {
             helloLabel.Text = "Xin chào ! " + curNhanVien.HoTen;
+        }
+
+        private void nhanVienFrmButton_Click(object sender, EventArgs e)
+        {
+            var frm = new frmNhanVien(curNhanVien, password);
+            frm.Show();
         }
     }
 }

@@ -46,7 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CryptoExtension\AES256Extension.cs" />
-    <Compile Include="CryptoExtension\RSA512Extension.cs" />
+    <Compile Include="CryptoExtension\KeyRepository.cs" />
+    <Compile Include="CryptoExtension\RSACryptography.cs" />
     <Compile Include="CryptoExtension\SHA1Extension.cs" />
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="DTO\NhanVienDTO.cs" />
@@ -91,9 +92,16 @@
     <Compile Include="frmSinhVien.Designer.cs">
       <DependentUpon>frmSinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CryptoExtension\MD5Extension.cs" />
+    <Compile Include="CryptoExtension\StringExtension.cs" />
     <EmbeddedResource Include="frmBangDiem.resx">
       <DependentUpon>frmBangDiem.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSinhVien.resx">
       <DependentUpon>frmSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -148,12 +159,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\Database.sql" />
+    <Content Include="StoreProcedures\SP_GETBYUSERNAMEANDPASS_PUBLIC_ENCRYPT_NHANVIEN.sql" />
+    <Content Include="StoreProcedures\SP_SEL_PUBLIC_ENCRYPT_NHANVIEN.sql" />
+    <Content Include="StoreProcedures\SP_INS_PUBLIC_ENCRYPT_NHANVIEN.sql" />
+    <Content Include="StoreProcedures\SP_GETBYMANV_PUBLIC_ENCRYPT_NHANVIEN.sql" />
     <Content Include="StoreProcedures\SP_UPD_ENCRYPTED_SINHVIEN.sql" />
-    <Content Include="StoreProcedures\SP_SEL_PUBLIC_NHANVIEN.sql" />
     <Content Include="StoreProcedures\SP_INS_ENCRYPTED_SINHVIEN.sql" />
-    <Content Include="StoreProcedures\SP_BANGDIEM_Update.sql" />
-    <Content Include="StoreProcedures\SP_BANGDIEM_Insert.sql" />
-    <Content Include="StoreProcedures\SP_BANGDIEM_GetDecryptedListByMaSV.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,13 @@
+﻿Tài khoản username - password :
+nhanvien01 - thanhbinh
+nhanvien02 - hophuong
+
+Cách mã hóa RSA: 
+Do khóa publickey và privatekey bắt buộc phải tự gen ra và không được can thiệp vào cách gen key 
+nên sẽ không thực hiện được theo yêu cầu đề bài là PublicKey là mã nv, PrivateKey là mật khẩu.
+
+Nên tụi em sẽ dùng cách tạo ra bộ key (key pairs - public và public/privatekey) sau đó lưu dưới dạng file .xml vào folder /PublicKey - /PrivateKey 
+với tên file là [MaNV].xml . Riêng privatekey trước khi lưu, sẽ được mã hóa nội dung bằng thuật toán AES với key là
+mật khẩu chưa hash của nhân viên vừa tạo, như vậy thì dù có lấy được file .xml của private key thì cũng sẽ không làm gì được trừ khi có password của NV đó
+.Ở frmNhanVien, nhân viên đăng nhập vào sẽ chỉ xem được lương của mình lương của các nhân viên khác sẽ bị mã hóa vì chỉ có 
+mật khẩu chưa hash (mật khẩu do NV nhập vào lúc ở frmDangNhap) mới giải mã được lương, mà dữ liệu lấy xuống thì mật khẩu đã bị hash nên sẽ không giải mã được

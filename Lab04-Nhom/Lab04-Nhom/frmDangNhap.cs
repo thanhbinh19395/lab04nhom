@@ -2,15 +2,9 @@
 using Lab04_Nhom.CryptoExtension;
 using Lab04_Nhom.DTO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Lab04_Nhom.CryptoExtension;
+using Lab04_Nhom.Entity;
+
 namespace Lab04_Nhom
 {
     public partial class frmDangNhap : Form
@@ -30,14 +24,16 @@ namespace Lab04_Nhom
                 MatKhau = passwordTextBox.Text.GetSHA1Hash()
             };
 
-            var nvDt = DbLib.GetDataTable("SP_SEL_PUBLIC_ENCRYPT_NHANVIEN", login.ToSqlParameter());
+            var nv = DbLib.GetOne<NhanVien>("SP_GETBYUSERNAMEANDPASS_PUBLIC_ENCRYPT_NHANVIEN", login.ToSqlParameter());
 
-            if (nvDt.Rows.Count == 1)
+            if (nv != null)
             {
                 MessageBox.Show("Đăng nhập thành công nha !");
+                var frmQLSV = new frmQuanLySV(nv, passwordTextBox.Text);
+                this.Hide();
+                frmQLSV.Show();
                 return;
             }
-
             MessageBox.Show("Tên đăng nhập hoặc mật khẩu không thèm đúng !");
         }
 
