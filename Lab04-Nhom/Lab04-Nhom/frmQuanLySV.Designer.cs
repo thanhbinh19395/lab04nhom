@@ -32,6 +32,7 @@
             this.sinhVienFrmButton = new System.Windows.Forms.Button();
             this.lopFrmButton = new System.Windows.Forms.Button();
             this.bangDiemFrmButton = new System.Windows.Forms.Button();
+            this.nhanVienFrmButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // helloLabel
@@ -45,7 +46,7 @@
             // 
             // sinhVienFrmButton
             // 
-            this.sinhVienFrmButton.Location = new System.Drawing.Point(16, 70);
+            this.sinhVienFrmButton.Location = new System.Drawing.Point(141, 72);
             this.sinhVienFrmButton.Name = "sinhVienFrmButton";
             this.sinhVienFrmButton.Size = new System.Drawing.Size(94, 45);
             this.sinhVienFrmButton.TabIndex = 1;
@@ -55,7 +56,7 @@
             // 
             // lopFrmButton
             // 
-            this.lopFrmButton.Location = new System.Drawing.Point(139, 70);
+            this.lopFrmButton.Location = new System.Drawing.Point(265, 72);
             this.lopFrmButton.Name = "lopFrmButton";
             this.lopFrmButton.Size = new System.Drawing.Size(94, 45);
             this.lopFrmButton.TabIndex = 2;
@@ -65,7 +66,7 @@
             // 
             // bangDiemFrmButton
             // 
-            this.bangDiemFrmButton.Location = new System.Drawing.Point(259, 70);
+            this.bangDiemFrmButton.Location = new System.Drawing.Point(390, 72);
             this.bangDiemFrmButton.Name = "bangDiemFrmButton";
             this.bangDiemFrmButton.Size = new System.Drawing.Size(94, 45);
             this.bangDiemFrmButton.TabIndex = 3;
@@ -73,11 +74,22 @@
             this.bangDiemFrmButton.UseVisualStyleBackColor = true;
             this.bangDiemFrmButton.Click += new System.EventHandler(this.bangDiemFrmButton_Click);
             // 
+            // nhanVienFrmButton
+            // 
+            this.nhanVienFrmButton.Location = new System.Drawing.Point(16, 72);
+            this.nhanVienFrmButton.Name = "nhanVienFrmButton";
+            this.nhanVienFrmButton.Size = new System.Drawing.Size(94, 45);
+            this.nhanVienFrmButton.TabIndex = 4;
+            this.nhanVienFrmButton.Text = "QL Nhân Viên";
+            this.nhanVienFrmButton.UseVisualStyleBackColor = true;
+            this.nhanVienFrmButton.Click += new System.EventHandler(this.nhanVienFrmButton_Click);
+            // 
             // frmQuanLySV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 152);
+            this.ClientSize = new System.Drawing.Size(508, 156);
+            this.Controls.Add(this.nhanVienFrmButton);
             this.Controls.Add(this.bangDiemFrmButton);
             this.Controls.Add(this.lopFrmButton);
             this.Controls.Add(this.sinhVienFrmButton);
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Button sinhVienFrmButton;
         private System.Windows.Forms.Button lopFrmButton;
         private System.Windows.Forms.Button bangDiemFrmButton;
+        private System.Windows.Forms.Button nhanVienFrmButton;
     }
 }

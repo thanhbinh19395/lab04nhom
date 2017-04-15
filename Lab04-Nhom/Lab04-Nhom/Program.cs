@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab04_Nhom.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,9 @@ namespace Lab04_Nhom
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmNhanVien());
+            //Application.Run(new frmTest());
+
+            Application.Run(new frmDangNhap());
         }
     }
 }

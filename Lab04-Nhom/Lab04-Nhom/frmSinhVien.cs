@@ -15,13 +15,13 @@ namespace Lab04_Nhom
 {
     public partial class frmSinhVien : Form
     {
-        private NhanVienDTO CurNhanVien { get; set; }
+        private NhanVien CurNhanVien { get; set; }
         SqlDatabase DbLib;
         public frmSinhVien()
         {
             InitializeComponent();
         }
-        public frmSinhVien(NhanVienDTO curnv) {
+        public frmSinhVien(NhanVien curnv) {
             InitializeComponent();
             this.CurNhanVien = curnv;
             DbLib = new SqlDatabase();
