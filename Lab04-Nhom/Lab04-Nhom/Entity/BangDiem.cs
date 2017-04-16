@@ -10,6 +10,6 @@ namespace Lab04_Nhom.Entity
     {
         public string MaSV { get; set; }
         public string MaHP { get; set; }
-        public int DiemThi { get; set; }
+        public string DiemThi { get; set; }
     }
 }

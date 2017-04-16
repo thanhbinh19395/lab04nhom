@@ -11,3 +11,6 @@ với tên file là [MaNV].xml . Riêng privatekey trước khi lưu, sẽ đư�
 mật khẩu chưa hash của nhân viên vừa tạo, như vậy thì dù có lấy được file .xml của private key thì cũng sẽ không làm gì được trừ khi có password của NV đó
 .Ở frmNhanVien, nhân viên đăng nhập vào sẽ chỉ xem được lương của mình lương của các nhân viên khác sẽ bị mã hóa vì chỉ có 
 mật khẩu chưa hash (mật khẩu do NV nhập vào lúc ở frmDangNhap) mới giải mã được lương, mà dữ liệu lấy xuống thì mật khẩu đã bị hash nên sẽ không giải mã được
+
+.Ở frmBangDiem, nhân viên đăng nhập chỉ xem được thông tin điểm của sinh viên thuộc lớp mình, nếu mở điểm của sinh viên lớp khác đều sẽ bị mã hóa. Ngoài ra không
+cho phép nhân viên không thuộc lớp đó thực hiện thêm/xóa/sửa ở lớp đó.

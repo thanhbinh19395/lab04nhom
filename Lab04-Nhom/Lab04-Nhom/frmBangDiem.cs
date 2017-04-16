@@ -1,4 +1,5 @@
 ﻿using DatabaseLib;
+using Lab04_Nhom.CryptoExtension;
 using Lab04_Nhom.DTO;
 using Lab04_Nhom.Entity;
 using System;
@@ -17,25 +18,59 @@ namespace Lab04_Nhom
     public partial class frmBangDiem : Form
     {
         SqlDatabase DbLib;
-        NhanVienDTO curNhanVien { get; set; }
+        NhanVien curNhanVien { get; set; }
+        SinhVien curSinhVien { get; set; }
         string privateKey { get; set; }
+        List<BangDiem> listBangDiemByMaSV
+        {
+            get { return bangDiemBindingSource.DataSource as List<BangDiem>; }
+            set { bangDiemBindingSource.DataSource = value; }
+        }
+        RSACryptography rsaCryptoService;
         public frmBangDiem()
         {
             InitializeComponent();
             DbLib = new SqlDatabase();
+            this.rsaCryptoService = new RSACryptography();
         }
-        public frmBangDiem(NhanVienDTO nv, string privateKey)
+        public frmBangDiem(NhanVien nv, string privateKey)
         {
             InitializeComponent();
             DbLib = new SqlDatabase();
             this.curNhanVien = nv;
             this.privateKey = privateKey;
+            this.rsaCryptoService = new RSACryptography();
         }
         private void frmBangDiem_Load(object sender, EventArgs e)
         {
             lopBindingSource.DataSource = DbLib.GetList<Lop>("select * from Lop");
-            hocPhanBindingSource.DataSource = DbLib.GetList<HocPhan>("select * from HocPhan");
+            hocPhanBindingSource.DataSource = DbLib.GetList<HocPhan>("select * from HOCPHAN");
+            Reload();
         }
+        private void Reload()
+        {
+            curSinhVien = sinhVienBindingSource.Current as SinhVien;
+            var curLop = lopBindingSource.Current as Lop;
+            var list = DbLib.GetList<BangDiem>(String.Format("select MaSV,MaHP, CONVERT(varchar(250), DiemThi) as DiemThi from BangDiem where MaSV = '{0}'", curSinhVien.MaSV));
+            if (curSinhVien != null && curSinhVien.MaSV != null && curLop.MaNV == curNhanVien.MaNV)
+            {
+                foreach (BangDiem item in list)
+                {
+                    handleDecryptBangDiem(item);
+                }
+
+            }
+            listBangDiemByMaSV = list;
+        }
+
+        private void handleDecryptBangDiem(BangDiem item)
+        {
+            if (!String.IsNullOrEmpty(privateKey))
+            {
+                item.DiemThi =  rsaCryptoService.Decrypt(privateKey, item.DiemThi.ToString());
+            }
+        }
+
 
         private void lopBindingSource_CurrentChanged(object sender, EventArgs e)
         {
@@ -49,48 +84,68 @@ namespace Lab04_Nhom
 
         private void luuButton_Click(object sender, EventArgs e)
         {
-            var list = bangDiemBindingSource.DataSource as List<BangDiem>;
-            list.ForEach(this.SaveBangDiemHandler);
+            var curLop = lopBindingSource.Current as Lop;
+            if (curNhanVien.MaNV != curLop.MaNV)
+            {
+                MessageBox.Show("Bạn không có quyền làm cái gì ở mục này nhé");
+                return;
+            }
+            listBangDiemByMaSV = bangDiemBindingSource.DataSource as List<BangDiem>;
+            listBangDiemByMaSV.ForEach(this.SaveBangDiemHandler);
         }
         private void SaveBangDiemHandler(BangDiem item)
         {
             item.MaSV = (sinhVienBindingSource.Current as SinhVien).MaSV;
             var existItem = DbLib.GetOne<BangDiem>(String.Format("select MaSV, MaHP from BangDiem where MaSV = '{0}' AND MaHP = '{1}' ", item.MaSV, item.MaHP));
-            var sqlParams = item.ToSqlParameter();
-            sqlParams.Add(new SqlParameter { ParameterName = "PubKey", Value = this.curNhanVien.MaNV });
             if (existItem != null)
             {
-                DbLib.ExecuteNonQuery("SP_BANGDIEM_Update", sqlParams);
+                //Cập nhật điểm của sinh viên
+                //DbLib.ExecuteNonQuery("SP_BANGDIEM_Update", sqlParams);
             }
             else
             {
-                DbLib.ExecuteNonQuery("SP_BANGDIEM_Insert", sqlParams);
+                //Lưu điểm mới của sinh viên
+                //Lấy public key của nhân viên đang đăng nhập
+                var publicKey = KeyRepository.GetPublicKey(curNhanVien.PubKey);
+                //Thực hiện mã hóa điểm
+                item.DiemThi = rsaCryptoService.Encrypt(publicKey, item.DiemThi);
+                var sqlParams = item.ToSqlParameter();
+                DbLib.ExecuteNonQuery("SP_INS_ENCRYPT_BANGDIEM", sqlParams);
             }
         }
 
         private void sinhVienBindingSource_CurrentChanged(object sender, EventArgs e)
         {
-            var cur = sinhVienBindingSource.Current as SinhVien;
-            if (cur != null && cur.MaSV != null)
-            {
-                List<SqlParameter> listParams = new List<SqlParameter>
-                {
-                    new SqlParameter {ParameterName = "PubKey", Value = "NV01" },
-                    new SqlParameter {ParameterName = "PrivateKey", Value = "123456"  },
-                    new SqlParameter {ParameterName ="MaSV", Value = cur.MaSV }
-                };
-                bangDiemBindingSource.DataSource = DbLib.GetList<BangDiem>("SP_BANGDIEM_GetDecryptedListByMaSV", listParams);
-            }
+            Reload();
         }
 
         private void xoaButton_Click(object sender, EventArgs e)
         {
+            var curLop = lopBindingSource.Current as Lop;
+            if (curNhanVien.MaNV != curLop.MaNV)
+            {
+                MessageBox.Show("Bạn không có quyền làm cái gì ở mục này nhé");
+                return;
+            }
             var cur = bangDiemBindingSource.Current;
             if (cur != null)
             {
                 DbLib.Delete(cur);
             }
             this.sinhVienBindingSource_CurrentChanged(null, null);
+        }
+
+        private void themButton_Click(object sender, EventArgs e)
+        {
+            var curLop = lopBindingSource.Current as Lop;
+            if (curNhanVien.MaNV != curLop.MaNV)
+            {
+                MessageBox.Show("Bạn không có quyền làm cái gì ở mục này nhé");
+                return;
+            }
+            listBangDiemByMaSV.Add(new BangDiem());
+            bangDiemBindingSource.ResetBindings(false);
+            bangDiemBindingSource.MoveLast();
         }
     }
 }
