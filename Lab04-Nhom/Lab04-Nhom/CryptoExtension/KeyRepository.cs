@@ -21,13 +21,13 @@ namespace Lab04_Nhom.CryptoExtension
             string publicPath = Path.Combine(path, "PublicKey/" + containerName + ".xml");
             File.WriteAllText(publicPath, key);
         }
-
         public static void StorePrivateKey(string containerName, string key, string password)
         {
             string privatePath = Path.Combine(path, "PrivateKey/" + containerName + ".xml");
 
             File.WriteAllText(privatePath, key.GetAES256EncryptString(password));
         }
+
         public static string GetPublicKey(string containerName)
         {
             string publicPath = Path.Combine(path, "PublicKey/" + containerName + ".xml");
@@ -46,11 +46,7 @@ namespace Lab04_Nhom.CryptoExtension
             else
                 return null;
         }
-        public static bool isExistsPublicKey(string containerName)
-        {
-            string publicPath = Path.Combine(path, "PublicKey/" + containerName + ".xml");
-            return File.Exists(publicPath);
-        }
+
         
         public static void DeletePublicKey(string containerName)
         {
@@ -74,11 +70,16 @@ namespace Lab04_Nhom.CryptoExtension
             StorePublicKey(containerName, key.publicKey);
             StorePrivateKey(containerName, key.privateKey, password);
         }
-
         public static void DeleteKeyPairs(string containerName)
         {
             DeletePublicKey(containerName);
             DeletePrivateKey(containerName);
+        }
+
+        public static bool isExistsPublicKey(string containerName)
+        {
+            string publicPath = Path.Combine(path, "PublicKey/" + containerName + ".xml");
+            return File.Exists(publicPath);
         }
     }
 

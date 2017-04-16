@@ -35,7 +35,6 @@ namespace Lab04_Nhom
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
             lopBindingSource.DataSource = DbLib.GetList<Lop>(String.Format("select * from Lop", CurNhanVien.MaNV));
-            
         }
 
         private void lopBindingSource_CurrentChanged(object sender, EventArgs e)
