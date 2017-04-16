@@ -32,7 +32,8 @@ namespace Lab04_Nhom
             DbLib = new SqlDatabase();
             this.rsaCryptoService = new RSACryptography();
         }
-        public frmNhanVien(NhanVien nv, string password) {
+        public frmNhanVien(NhanVien nv, string password)
+        {
             InitializeComponent();
             DbLib = new SqlDatabase();
 
@@ -68,7 +69,8 @@ namespace Lab04_Nhom
             ListNhanVien.ForEach(this.SaveHandler);
             ReloadGrid();
         }
-        private void SaveHandler(NhanVien item) {
+        private void SaveHandler(NhanVien item)
+        {
             if (String.IsNullOrWhiteSpace(item.Luong) || String.IsNullOrWhiteSpace(item.MatKhau))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin cho nhân viên " + item.MaNV);
@@ -76,7 +78,7 @@ namespace Lab04_Nhom
             }
 
             var existItem = DbLib.GetOne<NhanVien>("SP_GETBYMANV_PUBLIC_ENCRYPT_NHANVIEN", new List<SqlParameter> {
-                new SqlParameter {ParameterName= "MaNV", Value = item.MaNV }
+                new SqlParameter { ParameterName= "MaNV", Value = item.MaNV }
             });
             if (existItem != null)
             {
@@ -88,18 +90,18 @@ namespace Lab04_Nhom
                 item.PubKey = item.MaNV;
                 var keyPairs = rsaCryptoService.GenerateKeys();
                 KeyRepository.StoreKeyPairs(item.PubKey, keyPairs, item.MatKhau);
-                item.MatKhau = item.MatKhau.GetMd5Hash();
+                item.MatKhau = item.MatKhau.GetSHA1Hash();
 
                 item.Luong = rsaCryptoService.Encrypt(keyPairs.publicKey, item.Luong);
                 DbLib.ExecuteNonQuery("SP_INS_PUBLIC_ENCRYPT_NHANVIEN", item.ToSqlParameter());
             }
         }
-        
+
         private void xoaButton_Click(object sender, EventArgs e)
         {
             var curItem = nhanVienBindingSource.Current as NhanVien;
 
-            if(curItem.MaNV == nhanVienDangNhap.MaNV)
+            if (curItem.MaNV == nhanVienDangNhap.MaNV)
             {
                 MessageBox.Show("Không được xóa nhân viên đang đăng nhập");
                 return;
@@ -108,14 +110,15 @@ namespace Lab04_Nhom
             if (curItem != null)
             {
                 var result = DbLib.Delete(curItem);
-                if(result != 0)
+                if (result != 0)
                 {
                     this.ReloadGrid();
                     KeyRepository.DeleteKeyPairs(curItem.PubKey);
                 }
             }
         }
-        public void ReloadGrid() {
+        public void ReloadGrid()
+        {
             frmNhanVien_Load(null, null);
         }
 

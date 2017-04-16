@@ -21,7 +21,7 @@ namespace Lab04_Nhom
             LoginDTO login = new LoginDTO
             {
                 TenDN = usernameTextBox.Text,
-                MatKhau = passwordTextBox.Text.GetMd5Hash()
+                MatKhau = passwordTextBox.Text.GetSHA1Hash()
             };
 
             var nv = DbLib.GetOne<NhanVien>("SP_GETBYUSERNAMEANDPASS_PUBLIC_ENCRYPT_NHANVIEN", login.ToSqlParameter());

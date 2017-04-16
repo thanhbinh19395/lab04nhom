@@ -43,24 +43,28 @@ namespace Lab04_Nhom
         }
         private void frmBangDiem_Load(object sender, EventArgs e)
         {
-            lopBindingSource.DataSource = DbLib.GetList<Lop>("select * from Lop");
+            lopBindingSource.DataSource = DbLib.GetList<Lop>(String.Format("select * from Lop where MaNV = '{0}'", curNhanVien.MaNV));
             hocPhanBindingSource.DataSource = DbLib.GetList<HocPhan>("select * from HOCPHAN");
             Reload();
         }
         private void Reload()
         {
             curSinhVien = sinhVienBindingSource.Current as SinhVien;
-            var curLop = lopBindingSource.Current as Lop;
-            var list = DbLib.GetList<BangDiem>(String.Format("select MaSV,MaHP, CONVERT(varchar(250), DiemThi) as DiemThi from BangDiem where MaSV = '{0}'", curSinhVien.MaSV));
-            if (curSinhVien != null && curSinhVien.MaSV != null && curLop.MaNV == curNhanVien.MaNV)
+            if(curSinhVien != null)
             {
-                foreach (BangDiem item in list)
+                var curLop = lopBindingSource.Current as Lop;
+                var list = DbLib.GetList<BangDiem>(String.Format("select MaSV,MaHP, CONVERT(varchar(250), DiemThi) as DiemThi from BangDiem where MaSV = '{0}'", curSinhVien.MaSV));
+                if (curSinhVien != null && curSinhVien.MaSV != null && curLop.MaNV == curNhanVien.MaNV)
                 {
-                    handleDecryptBangDiem(item);
-                }
+                    foreach (BangDiem item in list)
+                    {
+                        handleDecryptBangDiem(item);
+                    }
 
+                }
+                listBangDiemByMaSV = list;
             }
-            listBangDiemByMaSV = list;
+            
         }
 
         private void handleDecryptBangDiem(BangDiem item)
@@ -84,12 +88,6 @@ namespace Lab04_Nhom
 
         private void luuButton_Click(object sender, EventArgs e)
         {
-            var curLop = lopBindingSource.Current as Lop;
-            if (curNhanVien.MaNV != curLop.MaNV)
-            {
-                MessageBox.Show("Bạn không có quyền làm cái gì ở mục này nhé");
-                return;
-            }
             listBangDiemByMaSV = bangDiemBindingSource.DataSource as List<BangDiem>;
             listBangDiemByMaSV.ForEach(this.SaveBangDiemHandler);
         }
@@ -121,12 +119,6 @@ namespace Lab04_Nhom
 
         private void xoaButton_Click(object sender, EventArgs e)
         {
-            var curLop = lopBindingSource.Current as Lop;
-            if (curNhanVien.MaNV != curLop.MaNV)
-            {
-                MessageBox.Show("Bạn không có quyền làm cái gì ở mục này nhé");
-                return;
-            }
             var cur = bangDiemBindingSource.Current;
             if (cur != null)
             {
@@ -137,12 +129,6 @@ namespace Lab04_Nhom
 
         private void themButton_Click(object sender, EventArgs e)
         {
-            var curLop = lopBindingSource.Current as Lop;
-            if (curNhanVien.MaNV != curLop.MaNV)
-            {
-                MessageBox.Show("Bạn không có quyền làm cái gì ở mục này nhé");
-                return;
-            }
             listBangDiemByMaSV.Add(new BangDiem());
             bangDiemBindingSource.ResetBindings(false);
             bangDiemBindingSource.MoveLast();
