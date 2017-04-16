@@ -160,11 +160,10 @@
   <ItemGroup>
     <Content Include="Database\Database.sql" />
     <Content Include="StoreProcedures\SP_GETBYUSERNAMEANDPASS_PUBLIC_ENCRYPT_NHANVIEN.sql" />
+    <Content Include="StoreProcedures\SP_INS_ENCRYPT_BANGDIEM.sql" />
     <Content Include="StoreProcedures\SP_SEL_PUBLIC_ENCRYPT_NHANVIEN.sql" />
     <Content Include="StoreProcedures\SP_INS_PUBLIC_ENCRYPT_NHANVIEN.sql" />
     <Content Include="StoreProcedures\SP_GETBYMANV_PUBLIC_ENCRYPT_NHANVIEN.sql" />
-    <Content Include="StoreProcedures\SP_UPD_ENCRYPTED_SINHVIEN.sql" />
-    <Content Include="StoreProcedures\SP_INS_ENCRYPTED_SINHVIEN.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

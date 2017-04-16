@@ -88,7 +88,7 @@ namespace Lab04_Nhom
                 item.PubKey = item.MaNV;
                 var keyPairs = rsaCryptoService.GenerateKeys();
                 KeyRepository.StoreKeyPairs(item.PubKey, keyPairs, item.MatKhau);
-                item.MatKhau = item.MatKhau.GetSHA1Hash();
+                item.MatKhau = item.MatKhau.GetMd5Hash();
 
                 item.Luong = rsaCryptoService.Encrypt(keyPairs.publicKey, item.Luong);
                 DbLib.ExecuteNonQuery("SP_INS_PUBLIC_ENCRYPT_NHANVIEN", item.ToSqlParameter());

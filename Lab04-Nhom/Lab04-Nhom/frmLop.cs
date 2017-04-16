@@ -16,11 +16,6 @@ namespace Lab04_Nhom
     public partial class frmLop : Form
     {
         SqlDatabase DbLib;
-        List<Lop> ListLop
-        {
-            get { return lopBindingSource.DataSource as List<Lop>; }
-            set { lopBindingSource.DataSource = value; }
-        }
         public frmLop()
         {
             InitializeComponent();
@@ -41,11 +36,6 @@ namespace Lab04_Nhom
         }
         private void SaveLopHandler(Lop item)
         {
-            if (String.IsNullOrWhiteSpace(item.MaLop))
-            {
-                MessageBox.Show("Vui long dien MaLop");
-                return;
-            }
             var existItem = DbLib.GetOne<Lop>(String.Format("select * from Lop where MaLop = '{0}'", item.MaLop));
             if (existItem != null)
             {
@@ -64,18 +54,11 @@ namespace Lab04_Nhom
         private void xoaButton_Click(object sender, EventArgs e)
         {
             var curItem = lopBindingSource.Current;
-            if (curItem != null)
+            if(curItem != null)
             {
                 DbLib.Delete(curItem);
                 this.ReloadGrid();
             }
-        }
-
-        private void themButton_Click(object sender, EventArgs e)
-        {
-            ListLop.Add(new Lop());
-            lopBindingSource.ResetBindings(false);
-            lopBindingSource.MoveLast();
         }
     }
 }

@@ -59,6 +59,7 @@
             this.bangDiemDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.themButton = new System.Windows.Forms.Button();
             diaChiLabel = new System.Windows.Forms.Label();
             hoTenLabel = new System.Windows.Forms.Label();
             maSVLabel = new System.Windows.Forms.Label();
@@ -79,54 +80,54 @@
             // diaChiLabel
             // 
             diaChiLabel.AutoSize = true;
-            diaChiLabel.Location = new System.Drawing.Point(307, 27);
+            diaChiLabel.Location = new System.Drawing.Point(307, 29);
             diaChiLabel.Name = "diaChiLabel";
-            diaChiLabel.Size = new System.Drawing.Size(44, 13);
+            diaChiLabel.Size = new System.Drawing.Size(43, 14);
             diaChiLabel.TabIndex = 1;
             diaChiLabel.Text = "Dia Chi:";
             // 
             // hoTenLabel
             // 
             hoTenLabel.AutoSize = true;
-            hoTenLabel.Location = new System.Drawing.Point(23, 53);
+            hoTenLabel.Location = new System.Drawing.Point(23, 57);
             hoTenLabel.Name = "hoTenLabel";
-            hoTenLabel.Size = new System.Drawing.Size(46, 13);
+            hoTenLabel.Size = new System.Drawing.Size(43, 14);
             hoTenLabel.TabIndex = 3;
             hoTenLabel.Text = "Ho Ten:";
             // 
             // maSVLabel
             // 
             maSVLabel.AutoSize = true;
-            maSVLabel.Location = new System.Drawing.Point(23, 27);
+            maSVLabel.Location = new System.Drawing.Point(23, 29);
             maSVLabel.Name = "maSVLabel";
-            maSVLabel.Size = new System.Drawing.Size(42, 13);
+            maSVLabel.Size = new System.Drawing.Size(42, 14);
             maSVLabel.TabIndex = 7;
             maSVLabel.Text = "Ma SV:";
             // 
             // ngaySinhLabel
             // 
             ngaySinhLabel.AutoSize = true;
-            ngaySinhLabel.Location = new System.Drawing.Point(294, 54);
+            ngaySinhLabel.Location = new System.Drawing.Point(294, 58);
             ngaySinhLabel.Name = "ngaySinhLabel";
-            ngaySinhLabel.Size = new System.Drawing.Size(59, 13);
+            ngaySinhLabel.Size = new System.Drawing.Size(59, 14);
             ngaySinhLabel.TabIndex = 11;
             ngaySinhLabel.Text = "Ngay Sinh:";
             // 
             // maHPLabel
             // 
             maHPLabel.AutoSize = true;
-            maHPLabel.Location = new System.Drawing.Point(39, 104);
+            maHPLabel.Location = new System.Drawing.Point(39, 112);
             maHPLabel.Name = "maHPLabel";
-            maHPLabel.Size = new System.Drawing.Size(43, 13);
+            maHPLabel.Size = new System.Drawing.Size(40, 14);
             maHPLabel.TabIndex = 18;
             maHPLabel.Text = "Ma HP:";
             // 
             // diemThiLabel
             // 
             diemThiLabel.AutoSize = true;
-            diemThiLabel.Location = new System.Drawing.Point(30, 132);
+            diemThiLabel.Location = new System.Drawing.Point(30, 142);
             diemThiLabel.Name = "diemThiLabel";
-            diemThiLabel.Size = new System.Drawing.Size(52, 13);
+            diemThiLabel.Size = new System.Drawing.Size(50, 14);
             diemThiLabel.TabIndex = 18;
             diemThiLabel.Text = "Diem Thi:";
             // 
@@ -134,9 +135,9 @@
             // 
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(364, 53);
+            this.groupBox1.Size = new System.Drawing.Size(364, 57);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -144,9 +145,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
+            this.label1.Location = new System.Drawing.Point(6, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.Size = new System.Drawing.Size(32, 14);
             this.label1.TabIndex = 1;
             this.label1.Text = "Lớp :";
             // 
@@ -155,9 +156,9 @@
             this.comboBox1.DataSource = this.lopBindingSource;
             this.comboBox1.DisplayMember = "TenLop";
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(43, 19);
+            this.comboBox1.Location = new System.Drawing.Point(43, 20);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(315, 21);
+            this.comboBox1.Size = new System.Drawing.Size(315, 22);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.ValueMember = "MaLop";
             // 
@@ -169,9 +170,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.sinhVienDataGridView);
-            this.groupBox2.Location = new System.Drawing.Point(12, 72);
+            this.groupBox2.Location = new System.Drawing.Point(12, 78);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(364, 507);
+            this.groupBox2.Size = new System.Drawing.Size(364, 546);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
@@ -185,9 +186,9 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.sinhVienDataGridView.DataSource = this.sinhVienBindingSource;
-            this.sinhVienDataGridView.Location = new System.Drawing.Point(6, 19);
+            this.sinhVienDataGridView.Location = new System.Drawing.Point(6, 20);
             this.sinhVienDataGridView.Name = "sinhVienDataGridView";
-            this.sinhVienDataGridView.Size = new System.Drawing.Size(352, 482);
+            this.sinhVienDataGridView.Size = new System.Drawing.Size(352, 519);
             this.sinhVienDataGridView.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
@@ -215,6 +216,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.themButton);
             this.groupBox3.Controls.Add(diemThiLabel);
             this.groupBox3.Controls.Add(this.diemThiTextBox);
             this.groupBox3.Controls.Add(maHPLabel);
@@ -230,9 +232,9 @@
             this.groupBox3.Controls.Add(ngaySinhLabel);
             this.groupBox3.Controls.Add(this.ngaySinhDateTimePicker);
             this.groupBox3.Controls.Add(this.bangDiemDataGridView);
-            this.groupBox3.Location = new System.Drawing.Point(383, 12);
+            this.groupBox3.Location = new System.Drawing.Point(383, 13);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(577, 581);
+            this.groupBox3.Size = new System.Drawing.Size(577, 626);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
@@ -240,7 +242,7 @@
             // diemThiTextBox
             // 
             this.diemThiTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bangDiemBindingSource, "DiemThi", true));
-            this.diemThiTextBox.Location = new System.Drawing.Point(88, 129);
+            this.diemThiTextBox.Location = new System.Drawing.Point(88, 139);
             this.diemThiTextBox.Name = "diemThiTextBox";
             this.diemThiTextBox.Size = new System.Drawing.Size(200, 20);
             this.diemThiTextBox.TabIndex = 19;
@@ -255,9 +257,9 @@
             this.hocPhanComboBox.DataSource = this.hocPhanBindingSource;
             this.hocPhanComboBox.DisplayMember = "TenHP";
             this.hocPhanComboBox.FormattingEnabled = true;
-            this.hocPhanComboBox.Location = new System.Drawing.Point(88, 101);
+            this.hocPhanComboBox.Location = new System.Drawing.Point(88, 109);
             this.hocPhanComboBox.Name = "hocPhanComboBox";
-            this.hocPhanComboBox.Size = new System.Drawing.Size(200, 21);
+            this.hocPhanComboBox.Size = new System.Drawing.Size(200, 22);
             this.hocPhanComboBox.TabIndex = 18;
             this.hocPhanComboBox.ValueMember = "MaHP";
             // 
@@ -267,9 +269,9 @@
             // 
             // xoaButton
             // 
-            this.xoaButton.Location = new System.Drawing.Point(357, 127);
+            this.xoaButton.Location = new System.Drawing.Point(482, 137);
             this.xoaButton.Name = "xoaButton";
-            this.xoaButton.Size = new System.Drawing.Size(75, 23);
+            this.xoaButton.Size = new System.Drawing.Size(75, 25);
             this.xoaButton.TabIndex = 17;
             this.xoaButton.Text = "Xóa";
             this.xoaButton.UseVisualStyleBackColor = true;
@@ -277,9 +279,9 @@
             // 
             // luuButton
             // 
-            this.luuButton.Location = new System.Drawing.Point(481, 127);
+            this.luuButton.Location = new System.Drawing.Point(401, 137);
             this.luuButton.Name = "luuButton";
-            this.luuButton.Size = new System.Drawing.Size(75, 23);
+            this.luuButton.Size = new System.Drawing.Size(75, 25);
             this.luuButton.TabIndex = 16;
             this.luuButton.Text = "Lưu";
             this.luuButton.UseVisualStyleBackColor = true;
@@ -289,7 +291,7 @@
             // 
             this.diaChiTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sinhVienBindingSource, "DiaChi", true));
             this.diaChiTextBox.Enabled = false;
-            this.diaChiTextBox.Location = new System.Drawing.Point(357, 24);
+            this.diaChiTextBox.Location = new System.Drawing.Point(357, 26);
             this.diaChiTextBox.Name = "diaChiTextBox";
             this.diaChiTextBox.Size = new System.Drawing.Size(200, 20);
             this.diaChiTextBox.TabIndex = 2;
@@ -298,7 +300,7 @@
             // 
             this.hoTenTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sinhVienBindingSource, "HoTen", true));
             this.hoTenTextBox.Enabled = false;
-            this.hoTenTextBox.Location = new System.Drawing.Point(88, 50);
+            this.hoTenTextBox.Location = new System.Drawing.Point(88, 54);
             this.hoTenTextBox.Name = "hoTenTextBox";
             this.hoTenTextBox.Size = new System.Drawing.Size(200, 20);
             this.hoTenTextBox.TabIndex = 4;
@@ -307,7 +309,7 @@
             // 
             this.maSVTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sinhVienBindingSource, "MaSV", true));
             this.maSVTextBox.Enabled = false;
-            this.maSVTextBox.Location = new System.Drawing.Point(88, 24);
+            this.maSVTextBox.Location = new System.Drawing.Point(88, 26);
             this.maSVTextBox.Name = "maSVTextBox";
             this.maSVTextBox.Size = new System.Drawing.Size(200, 20);
             this.maSVTextBox.TabIndex = 8;
@@ -316,7 +318,7 @@
             // 
             this.ngaySinhDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.sinhVienBindingSource, "NgaySinh", true));
             this.ngaySinhDateTimePicker.Enabled = false;
-            this.ngaySinhDateTimePicker.Location = new System.Drawing.Point(357, 50);
+            this.ngaySinhDateTimePicker.Location = new System.Drawing.Point(357, 54);
             this.ngaySinhDateTimePicker.Name = "ngaySinhDateTimePicker";
             this.ngaySinhDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.ngaySinhDateTimePicker.TabIndex = 12;
@@ -329,9 +331,9 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn5});
             this.bangDiemDataGridView.DataSource = this.bangDiemBindingSource;
-            this.bangDiemDataGridView.Location = new System.Drawing.Point(6, 169);
+            this.bangDiemDataGridView.Location = new System.Drawing.Point(6, 182);
             this.bangDiemDataGridView.Name = "bangDiemDataGridView";
-            this.bangDiemDataGridView.Size = new System.Drawing.Size(550, 392);
+            this.bangDiemDataGridView.Size = new System.Drawing.Size(550, 422);
             this.bangDiemDataGridView.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn6
@@ -346,11 +348,21 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "MaHP";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
+            // themButton
+            // 
+            this.themButton.Location = new System.Drawing.Point(320, 137);
+            this.themButton.Name = "themButton";
+            this.themButton.Size = new System.Drawing.Size(75, 25);
+            this.themButton.TabIndex = 20;
+            this.themButton.Text = "Thêm";
+            this.themButton.UseVisualStyleBackColor = true;
+            this.themButton.Click += new System.EventHandler(this.themButton_Click);
+            // 
             // frmBangDiem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 593);
+            this.ClientSize = new System.Drawing.Size(960, 639);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -398,5 +410,6 @@
         private System.Windows.Forms.TextBox diemThiTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.Button themButton;
     }
 }

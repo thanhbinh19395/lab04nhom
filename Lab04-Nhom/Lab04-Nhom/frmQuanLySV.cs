@@ -1,4 +1,5 @@
-﻿using Lab04_Nhom.DTO;
+﻿using Lab04_Nhom.CryptoExtension;
+using Lab04_Nhom.DTO;
 using Lab04_Nhom.Entity;
 using System;
 using System.Collections.Generic;
@@ -42,8 +43,17 @@ namespace Lab04_Nhom
 
         private void bangDiemFrmButton_Click(object sender, EventArgs e)
         {
-            //var frm = new frmBangDiem(curNhanVien, password);
-            //frm.Show();
+            var priKey = KeyRepository.GetPrivateKey(this.curNhanVien.PubKey, password);
+            frmBangDiem frm = null;
+            if (!String.IsNullOrEmpty(priKey))
+            {
+                frm = new frmBangDiem(curNhanVien, priKey);
+            }
+            else
+            {
+                frm = new frmBangDiem();
+            }
+            frm.Show();
         }
 
         private void frmQuanLySV_Load(object sender, EventArgs e)

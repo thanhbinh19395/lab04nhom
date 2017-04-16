@@ -1,0 +1,20 @@
+﻿CREATE PROC SP_UPD_ENCRYPT_NHANVIEN
+	@MaNV VARCHAR(20),
+	@HoTen NVARCHAR(100),
+	@Email VARCHAR(20),
+	@Luong VARCHAR(MAX),
+	@TenDN NVARCHAR(100),
+	@MatKhau VARCHAR(MAX),
+	@PubKey VARCHAR(20)
+AS
+BEGIN
+	UPDATE NHANVIEN SET
+	[MaNV] = @MaNV,
+	[HoTen] = @HoTen,
+	[Email] = @Email,
+	[Luong] = CONVERT(VARBINARY(MAX), @Luong),
+	[TenDN] = @TenDN,
+	[MatKhau] = CONVERT(VARBINARY(MAX),@MatKhau),
+	[PubKey] = @PubKey
+	WHERE MaNV = @MaNV 
+END
